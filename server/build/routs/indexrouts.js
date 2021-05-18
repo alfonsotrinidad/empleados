@@ -8,7 +8,11 @@ class Indexrouts {
         this.config();
     }
     config() {
-        this.router.get('/', indexcontroller_1.indexController.index);
+        this.router.get('/', indexcontroller_1.indexController.list);
+        this.router.get('/:id', indexcontroller_1.indexController.getone);
+        this.router.post('/', indexcontroller_1.indexController.create);
+        this.router.delete('/:id', indexcontroller_1.indexController.delete);
+        this.router.put('/:id', indexcontroller_1.indexController.update);
     }
 }
 const indexroutes = new Indexrouts();

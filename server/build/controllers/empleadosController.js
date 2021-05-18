@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.empleadoController = void 0;
 //base de datos
 const database_1 = __importDefault(require("../database"));
+////////
 class EmpleadoController {
     index(req, res) {
         const x = database_1.default.query('DESCRIBE empleados');
