@@ -12,6 +12,11 @@ const routes: Routes = [
 
   },
   {
+    path:'editar/:id', 
+    component:EmpleadoFomrComponent
+  },
+  
+  {
     path:'nuevo',
     component:EmpleadoFomrComponent
   },
@@ -19,6 +24,8 @@ const routes: Routes = [
     path:'lista',
     component:ListaempleadosComponent
   }
+
+  
 ];
 
 @NgModule({

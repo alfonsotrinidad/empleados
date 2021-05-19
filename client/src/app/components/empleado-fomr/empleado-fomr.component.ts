@@ -3,25 +3,37 @@ import { Empleado } from 'src/app/models/empleados';
 
 import { EmpleadosserviceService} from '../../services/empleadosservice.service'
 
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 @Component({
   selector: 'app-empleado-fomr',
   templateUrl: './empleado-fomr.component.html',
   styleUrls: ['./empleado-fomr.component.css']
 })
 export class EmpleadoFomrComponent implements OnInit {
-
+edit = false;
   constructor(
     private es:EmpleadosserviceService,
+    private ar:ActivatedRoute,
     private r:Router) { }
 
-  empleado:Empleado = {
+  empleado:any = {
     id:0,
     nombre:"", 
     fecha: ""
   };
 
   ngOnInit(): void {
+    const params = this.ar.snapshot.params;
+    if(params.id){
+     
+      this.es.getEmpleado(params.id).subscribe((
+        res  => {
+          console.log(res);
+          this. edit = true;
+          this.empleado = res;
+        }
+      ))
+    }
   }
 
   saveempleado(){
@@ -39,6 +51,13 @@ export class EmpleadoFomrComponent implements OnInit {
 
       )
       this.r.navigateByUrl('/lista');
+  }
+
+  updateempleado(){
+    this.es.actualizarEmpleado(this.empleado.id,this.empleado).subscribe(
+      res => { console.error(res)},
+      err => console.error(err)
+    )
   }
 
 }

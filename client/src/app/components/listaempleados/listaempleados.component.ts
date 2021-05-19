@@ -14,24 +14,27 @@ empleados: any =  [];
   constructor(private es:EmpleadosserviceService, private r:Router) { }
 
   ngOnInit(): void {
-    this.es.getEmpleados().subscribe(
-      res => {
-        this.empleados = res;
-      },
-      error => console.log(error)
-    );
+  this.getEmpleados();    
   }
 
+getEmpleados(){
+  this.es.getEmpleados().subscribe(
+    res => {
+      this.empleados = res;
+    },
+    error => console.log(error)
+  );
+}
   eliminar(id: string){
    
     this.es.eliminarEmpleado(id).subscribe(
       res =>{ 
-     
-      }
-      ,
+        this.getEmpleados();    
+      },
       err => console.log(err)
       )
        window.location.reload();
   }
+
 
 }

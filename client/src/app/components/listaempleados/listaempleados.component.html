@@ -14,7 +14,7 @@
                         <td class="fila">{{ e.nombre }}</td>
                         <td class="fila">{{ e.fecha }}</td>
                         <td>
-                            <button class="btn btn-primary btn-sm m-2">Editar</button>
+                            <button class="btn btn-primary btn-sm m-2" [routerLink]="['/editar',e.id]">Editar</button>
                             <button class="btn btn-danger  btn-sm m-2" (click)="eliminar(e.id)">Eliminar</button>   </td>
                     </tr>
                 </table>
