@@ -1,0 +1,25 @@
+<div class="container mt-3">
+    <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <table class="table table-hover">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha Contrato</th>
+                        <th scope="col">Acciones</th>
+                     </tr>
+                    <tr  *ngFor="let e of empleados">
+                        <td class="fila">{{ e.id }}</td>
+                        <td class="fila">{{ e.nombre }}</td>
+                        <td class="fila">{{ e.fecha }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm m-2">Editar</button>
+                            <button class="btn btn-danger  btn-sm m-2" (click)="eliminar(e.id)">Eliminar</button>   </td>
+                    </tr>
+                </table>
+            </div>
+          <div class="col-3"></div>
+      </div>
+  </div>
+   
